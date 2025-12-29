@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Privé – Zia’s hoekje</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <main class="card">
+        <header>
+            <h1>🔒 Privé-pagina van Zia (oefening)</h1>
+            <p class="subtitle" id="scoreLine"></p>
+        </header>
+
+        <section class="section">
+            <div class="alert">
+                <strong>Belangrijk:</strong> Dit is een fictieve oefening. In het echt is inloggen bij iemand anders
+                niet oké.
+            </div>
+
+            <h2>Level 2 – Los de raadselcode op</h2>
+            <p>
+                Je ziet hier “privé” info. Maar eerst: om door te gaan moet je een raadsel oplossen.
+                Het antwoord kun je vinden door goed te speuren op Zia’s Instagram.
+            </p>
+
+            <div class="box">
+                <h3>Het raadsel</h3>
+                <p class="riddle">
+                    Op Zia’s Instagram staat één post met een <strong>geheime tekst</strong> (op de foto).<br>
+                    Wat staat daar?
+                </p>
+                <p class="linkbox">
+                    🗺️ Decoder-kaart:
+                    <a href="decoder.html" target="_blank" rel="noopener noreferrer">Open de A–Z map</a>
+                </p>
+
+
+
+                <form id="riddleForm" class="form">
+                    <label>
+                        Raadselantwoord
+                        <input id="riddleAnswer" type="text" placeholder="bijv. 01012000" autocomplete="off" />
+                    </label>
+
+                    <div class="row">
+                        <button type="submit">Ontgrendel</button>
+                        <button type="button" class="secondary" id="riddleHintBtn">Hint</button>
+                    </div>
+
+                    <p id="riddleHint" class="hint" aria-live="polite"></p>
+                    <p id="riddleError" class="error" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+
+        <!-- QUIZ: standaard VERBORGEN -->
+        <section class="section hidden" id="quizSection">
+            <h2>Level 3 – Risico-quiz (nu pas zichtbaar!)</h2>
+            <p>
+                Nice. Je hebt het raadsel opgelost. Nu komt het echte detectivewerk:
+                wat is slim om te delen, en wat niet?
+            </p>
+
+            <form id="riskForm" class="form">
+                <div class="riskItem">
+                    <span>1) Je volledige naam</span>
+                    <select>
+                        <option value="">Kies…</option>
+                        <option>✅ oké</option>
+                        <option>⚠️ liever niet</option>
+                        <option>❌ nooit</option>
+                    </select>
+                </div>
+
+                <div class="riskItem">
+                    <span>2) Je adres / straatnaam</span>
+                    <select>
+                        <option value="">Kies…</option>
+                        <option>✅ oké</option>
+                        <option>⚠️ liever niet</option>
+                        <option>❌ nooit</option>
+                    </select>
+                </div>
+
+                <div class="riskItem">
+                    <span>3) Je schoolnaam</span>
+                    <select>
+                        <option value="">Kies…</option>
+                        <option>✅ oké</option>
+                        <option>⚠️ liever niet</option>
+                        <option>❌ nooit</option>
+                    </select>
+                </div>
+
+                <div class="riskItem">
+                    <span>4) Foto van je nieuwe sneakers</span>
+                    <select>
+                        <option value="">Kies…</option>
+                        <option>✅ oké</option>
+                        <option>⚠️ liever niet</option>
+                        <option>❌ nooit</option>
+                    </select>
+                </div>
+
+                <div class="riskItem">
+                    <span>5) “Wij zijn 2 weken op vakantie 😎”</span>
+                    <select>
+                        <option value="">Kies…</option>
+                        <option>✅ oké</option>
+                        <option>⚠️ liever niet</option>
+                        <option>❌ nooit</option>
+                    </select>
+                </div>
+
+                <div class="riskItem">
+                    <span>6) Je verjaardag</span>
+                    <select>
+                        <option value="">Kies…</option>
+                        <option>✅ oké</option>
+                        <option>⚠️ liever niet</option>
+                        <option>❌ nooit</option>
+                    </select>
+                </div>
+
+                <div class="riskItem">
+                    <span>7) Naam van je huisdier</span>
+                    <select>
+                        <option value="">Kies…</option>
+                        <option>✅ oké</option>
+                        <option>⚠️ liever niet</option>
+                        <option>❌ nooit</option>
+                    </select>
+                </div>
+
+                <div class="riskItem">
+                    <span>8) Een selfie thuis met zichtbaar huisnummer</span>
+                    <select>
+                        <option value="">Kies…</option>
+                        <option>✅ oké</option>
+                        <option>⚠️ liever niet</option>
+                        <option>❌ nooit</option>
+                    </select>
+                </div>
+
+                <div class="riskItem">
+                    <span>9) Je echte telefoonnummer</span>
+                    <select>
+                        <option value="">Kies…</option>
+                        <option>✅ oké</option>
+                        <option>⚠️ liever niet</option>
+                        <option>❌ nooit</option>
+                    </select>
+                </div>
+
+                <button type="submit">Check mijn keuzes</button>
+                <p id="result" class="hint" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <footer class="footer">
+            <a class="secondaryLink" href="index.html">← Terug naar start</a>
+        </footer>
+    </main>
+
+    <script>
+        // Score tonen
+        const params = new URLSearchParams(window.location.search);
+        const score = params.get('score');
+        document.getElementById('scoreLine').textContent =
+            score ? `🏁 Jouw score na het kraken van de login: ${score} punten` : "🏁 Goed speurwerk!";
+
+        // ----- RIDDLE UNLOCK -----
+        const riddleForm = document.getElementById('riddleForm');
+        const riddleHintBtn = document.getElementById('riddleHintBtn');
+        const riddleHintEl = document.getElementById('riddleHint');
+        const riddleErrorEl = document.getElementById('riddleError');
+        const quizSection = document.getElementById('quizSection');
+
+        let riddleHintCount = 0;
+
+        riddleHintBtn.addEventListener('click', () => {
+            riddleHintCount++;
+            if (riddleHintCount === 1) {
+                riddleHintEl.textContent = "Hint 1: het geheime woord staat op een foto (niet alleen in de caption).";
+            } else if (riddleHintCount === 2) {
+                riddleHintEl.textContent = "Hint 2: zoom in — het lijkt op een naamtag/bordje.";
+            } else {
+                riddleHintEl.textContent = "Je hebt alle hints al gehad 😼";
+            }
+            riddleErrorEl.textContent = "";
+        });
+
+        riddleForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const answer = document.getElementById('riddleAnswer').value.trim();
+
+            const normalized = answer.toLowerCase().replace(/\s+/g, "");
+            if (normalized === "whiskers") {
+                quizSection.classList.remove('hidden');
+                riddleErrorEl.textContent = "";
+                riddleHintEl.textContent = "✅ Ontgrendeld! Scroll naar beneden voor Level 3.";
+                document.getElementById('riddleAnswer').setAttribute('disabled', 'true');
+            } else {
+                riddleErrorEl.textContent = "Nog niet… Speur op Zia’s Instagram naar het geheime woord (kijk goed naar tekst op de foto!).";
+                riddleHintEl.textContent = "";
+            }
+
+        });
+
+        // ----- QUIZ CHECK -----
+        const expected = [
+            "⚠️ liever niet",
+            "❌ nooit",
+            "❌ nooit",
+            "✅ oké",
+            "❌ nooit",
+            "⚠️ liever niet",
+            "⚠️ liever niet",
+            "❌ nooit",
+            "❌ nooit"
+        ];
+
+        document.getElementById('riskForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const selects = Array.from(document.querySelectorAll('#riskForm select'));
+            let correct = 0;
+
+            selects.forEach((s, i) => {
+                if (s.value === expected[i]) correct++;
+            });
+
+            const result = document.getElementById('result');
+            if (correct >= 7) {
+                result.textContent = `Top! Je hebt ${correct}/9 superveilig gekozen. Jij bent bijna Cyber-Detective Master 😼`;
+            } else if (correct >= 5) {
+                result.textContent = `Nice! Je hebt ${correct}/9 goed. Denk extra aan adres/school/vakantie/huisnummer.`;
+            } else {
+                result.textContent = `Je hebt ${correct}/9 goed. Dat is precies waarom we oefenen: sommige info voelt onschuldig, maar is toch riskant.`;
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Internetdetectives – Zia’s Speurtocht</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <main class="card">
+        <header>
+            <h1>🕵️ Internetdetectives: Zia’s Speurtocht</h1>
+            <p class="subtitle">
+                Deze oefening is <strong>veilig en nep</strong>: er worden geen echte accounts gebruikt en niets wordt
+                opgeslagen.
+            </p>
+        </header>
+
+        <section class="section">
+            <h2>Stap 1 – Bekijk Zia’s Instagram</h2>
+            <p>
+                Open het profiel en speur naar digitale sporen. Denk aan: data, locaties, namen, gewoontes, “speciale
+                dagen”.
+            </p>
+
+            <p class="linkbox">
+                🔗 Instagram:
+                <a href="https://www.instagram.com/ziathecat2024/" target="_blank" rel="noopener noreferrer">
+                    @ziathecat2024
+                </a>
+            </p>
+
+            <div class="rules">
+                <h3>Detective-regels</h3>
+                <ul>
+                    <li>We speuren alleen naar info op dit fictieve scenario.</li>
+                    <li>Geen echte mensen opzoeken, geen echte accounts proberen.</li>
+                    <li>Doel: leren hoe je online slimmer en veiliger bent.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Stap 2 – “Privé” inloggen (nep)</h2>
+            <p>
+                Dit is een oefenlogin. Als je het wachtwoord raadt, zie je waarom “speciale datums” als wachtwoord niet
+                slim zijn.
+            </p>
+
+            <form id="loginForm" class="form">
+                <label>
+                    Gebruikersnaam
+                    <input id="username" type="text" placeholder="bijv. felix" autocomplete="off" />
+                </label>
+
+                <label>
+                    Wachtwoord
+                    <input id="password" type="password" autocomplete="off" />
+                </label>
+
+                <div class="row">
+                    <button type="submit">Inloggen</button>
+                    <button type="button" class="secondary" id="hintBtn">Hint</button>
+                </div>
+
+                <p id="hint" class="hint" aria-live="polite"></p>
+                <p id="error" class="error" aria-live="polite"></p>
+            </form>
+
+        </section>
+
+        <footer class="footer">
+            <p class="small">
+                ⚠️ Let op: dit is geen echte Instagram-login en heeft geen relatie met Instagram.
+            </p>
+        </footer>
+    </main>
+
+    <script>
+        let score = 10;
+
+        const form = document.getElementById('loginForm');
+        const hintBtn = document.getElementById('hintBtn');
+        const hintEl = document.getElementById('hint');
+        const errorEl = document.getElementById('error');
+
+        // Toon score bovenaan het formulier (simpel)
+        const scoreP = document.createElement('p');
+        scoreP.className = "score";
+        scoreP.textContent = `Score: ${score} punten`;
+        form.prepend(scoreP);
+
+        let hintCount = 0;
+
+        hintBtn.addEventListener('click', () => {
+            hintCount++;
+            if (hintCount === 1) {
+                score -= 2;
+                hintEl.textContent = "Hint 1: het is een hele speciale datum.";
+            } else if (hintCount === 2) {
+                score -= 3;
+                hintEl.textContent = "Hint 2: het zijn 8 cijfers (zonder streepjes).";
+            } else {
+                hintEl.textContent = "Geen extra hints meer 😼";
+            }
+            scoreP.textContent = `Score: ${score} punten`;
+            errorEl.textContent = "";
+        });
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const u = document.getElementById('username').value.trim().toLowerCase();
+            const p = document.getElementById('password').value.trim();
+
+            // Strenger: wachtwoord moet 8 cijfers zijn zonder streepjes
+            // (dus 15022024)
+            if (u === "zia" && p === "15022024") {
+                // geef score mee via querystring
+                window.location.href = `private.html?score=${encodeURIComponent(score)}`;
+            } else {
+                errorEl.textContent = "Nope… dat klopt niet. Check de sporen nog eens (en let op het formaat).";
+                hintEl.textContent = "";
+            }
+        });
+    </script>
+
+</body>
+
+</html>

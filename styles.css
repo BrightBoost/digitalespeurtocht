@@ -1,0 +1,278 @@
+:root {
+    --bg: #0b1020;
+    --card: #121a33;
+    --text: #eef2ff;
+    --muted: rgba(238, 242, 255, 0.75);
+    --line: rgba(238, 242, 255, 0.12);
+    --accent: #7dd3fc;
+    --danger: #fb7185;
+    --ok: #86efac;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: radial-gradient(1200px 600px at 20% 10%, rgba(125, 211, 252, 0.15), transparent),
+        radial-gradient(900px 500px at 80% 30%, rgba(134, 239, 172, 0.12), transparent),
+        var(--bg);
+    color: var(--text);
+    padding: 24px;
+}
+
+.card {
+    max-width: 860px;
+    margin: 0 auto;
+    background: rgba(18, 26, 51, 0.92);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 22px 22px 18px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+h1 {
+    margin: 0 0 6px;
+    font-size: 28px;
+}
+
+h2 {
+    margin: 0 0 10px;
+    font-size: 20px;
+}
+
+h3 {
+    margin: 0 0 6px;
+    font-size: 16px;
+}
+
+.subtitle {
+    margin: 0 0 16px;
+    color: var(--muted);
+}
+
+.section {
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+    margin-top: 16px;
+}
+
+.linkbox {
+    padding: 12px 14px;
+    border: 1px dashed var(--line);
+    border-radius: 12px;
+    background: rgba(125, 211, 252, 0.06);
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.rules {
+    margin-top: 12px;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.form {
+    display: grid;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+label {
+    display: grid;
+    gap: 6px;
+    color: var(--muted);
+}
+
+input {
+    padding: 11px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: rgba(0, 0, 0, 0.18);
+    color: var(--text);
+    font-size: 16px;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+}
+
+button {
+    padding: 10px 14px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: rgba(125, 211, 252, 0.12);
+    color: var(--text);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: rgba(125, 211, 252, 0.18);
+}
+
+.secondary {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.hint {
+    margin: 6px 0 0;
+    color: var(--accent);
+    min-height: 22px;
+}
+
+.error {
+    margin: 6px 0 0;
+    color: var(--danger);
+    min-height: 22px;
+}
+
+.teacher {
+    margin-top: 14px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--muted);
+}
+
+.alert {
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(251, 113, 133, 0.35);
+    background: rgba(251, 113, 133, 0.10);
+    margin-bottom: 12px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+@media (min-width: 760px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.box {
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.textarea {
+    width: 100%;
+    min-height: 110px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: rgba(0, 0, 0, 0.18);
+    color: var(--text);
+    padding: 10px 12px;
+    font-size: 16px;
+}
+
+.footer {
+    border-top: 1px solid var(--line);
+    margin-top: 16px;
+    padding-top: 12px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.small {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 0;
+}
+
+.secondaryLink {
+    color: var(--muted);
+}
+
+.riskItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.riskItem select {
+    min-width: 160px;
+    padding: 10px 10px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: rgba(0, 0, 0, 0.18);
+    color: var(--text);
+}
+
+.code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    color: var(--accent);
+}
+
+.score {
+    margin: 0 0 10px;
+    color: var(--ok);
+    font-weight: 600;
+}
+
+.hidden {
+    display: none;
+}
+
+.riddle {
+    line-height: 1.5;
+}
+
+.tableWrap {
+    overflow-x: auto;
+}
+
+table.map {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+table.map th,
+table.map td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--line);
+}
+
+table.map thead th {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+table.map tbody tr:hover {
+    background: rgba(125, 211, 252, 0.08);
+}
